@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/pts-react-app/static/css/main.18603536.css",
+    "main.js": "/pts-react-app/static/js/main.5cc29e92.js",
+    "index.html": "/pts-react-app/index.html",
+    "main.18603536.css.map": "/pts-react-app/static/css/main.18603536.css.map",
+    "main.5cc29e92.js.map": "/pts-react-app/static/js/main.5cc29e92.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.18603536.css",
+    "static/js/main.5cc29e92.js"
+  ]
+}
