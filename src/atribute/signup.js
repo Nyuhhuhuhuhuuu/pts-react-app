@@ -23,7 +23,7 @@ export default function Signup() {
       // fData.append("username", cust_username);
       // fData.append("email", cust_email);
       // fData.append("password", cust_password);
-      
+
       // fetch(url, {
       //   method: "POST",
       //   body: fData
@@ -31,7 +31,7 @@ export default function Signup() {
       //   .then((response) => response.json())
       //   .then((data) => alert(data))
       //   .catch((error) => alert(error));
-      
+
       alert("submit");
     } else {
       console.log("Passwords do not match");
