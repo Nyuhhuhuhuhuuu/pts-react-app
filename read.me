@@ -1,6 +1,6 @@
 #tutorial penggunaan web ini
 
-1. Buka terminal dan install kode berikut "npm install",
+1. Buka terminal dan install kode berikut "npm install",    
 2. Buatlah database
 
 CREATE DATABASES event
@@ -8,50 +8,50 @@ CREATE DATABASES event
 USE event
 
 CREATE TABLE admin(
-    admin.id VARCHAR(10),
-    admin.nama VARCHAR(50),
-    admin.email VARCHAR(50),
-    admin.password VARCHAR(50),
-    PRIMARY KEY (admin.id)
+    admin_id VARCHAR(10),
+    admin_nama VARCHAR(50),
+    admin_email VARCHAR(50),
+    admin_password VARCHAR(50),
+    PRIMARY KEY (admin_id)
 );
 
-CREATE TABLE user(
-    user.id VARCHAR(10),
-    user.nama VARCHAR(50),
-    user.email VARCHAR(50),
-    user.password VARCHAR(50),
-    user.image BLOB,
-    PRIMARY KEY (user.id)
+CREATE TABLE users(
+    user_id VARCHAR(10),
+    user_nama VARCHAR(50),
+    user_email VARCHAR(50),
+    user_password VARCHAR(50),
+    user_image BLOB,
+    PRIMARY KEY (user_id)
 );
 
-CREATE TABLE event(
-    event.id VARCHAR(10),
-    event.nama VARCHAR(50),
-    event.tanggal DATE,
-    event.lokasi VARCHAR(50),
-    event.jam TIME,
-    event.deskripsi VARCHAR(100),
-    event.image BLOB,
-    PRIMARY KEY (event.id)
+CREATE TABLE events(
+    event_id VARCHAR(10),
+    event_nama VARCHAR(50),
+    event_tanggal DATE,
+    event_lokasi VARCHAR(50),
+    event_jam TIME,
+    event_deskripsi VARCHAR(100),
+    event_image BLOB,
+    PRIMARY KEY (event_id)
 );
 
-CREATE TABLE order(
-    order.id VARCHAR(10),
-    order.id_event VARCHAR(10),
-    order.id_user VARCHAR(10),
-    order.jumlah INT,
-    order.total INT,
-    order.payment VARCHAR(16),   
-    PRIMARY KEY (order.id),
-    FOREIGN KEY (order.id_event) REFERENCES event(event.id),
-    FOREIGN KEY (order.id_user) REFERENCES user(user.id)
+CREATE TABLE orders(
+    order_id VARCHAR(10),
+    order_id_event VARCHAR(10),
+    order_id_user VARCHAR(10),
+    order_jumlah INT,
+    order_total INT,
+    order_payment VARCHAR(16),   
+    PRIMARY KEY (order_id),
+    FOREIGN KEY (order_id_event) REFERENCES events(event_id),
+    FOREIGN KEY (order_id_user) REFERENCES users(user_id)
 )
 
 INSERT INTO admin(
-    admin.id,
-    admin.name,
-    admin.email,
-    admin.password
+    admin_id,
+    admin_nama,
+    admin_email,
+    admin_password
 ) VALUES(
     'admin1',
     'Admin1',
