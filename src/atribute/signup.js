@@ -1,68 +1,43 @@
 import { useState } from "react";
-import axios from "axios";
+
 export default function Signup() {
-  // const [cust_username, setUsername] = useState("");
-  // const [cust_email, setEmail] = useState("");
-  // const [cust_password, setPassword] = useState("");
-  // const [cust_repassword, setRepassword] = useState("");
+  const [user_nama, setNama] = useState("");
+  const [user_email, setEmail] = useState("");
+  const [user_password, setPassword] = useState("");
+  const [user_repassword, setRepassword] = useState("");
 
-  const [inputs, setInputs] = useState({});
-  // console.log(cust_email, "ini email");
-  // console.log(cust_username, "ini username");
-  // console.log(cust_password, "ini password");
-  // console.log(cust_repassword, "ini repassword");
+  console.log(user_email, "ini email");
+  console.log(user_nama, "ini username");
+  console.log(user_password, "ini password");
+  console.log(user_repassword, "ini repassword");
 
-  const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setInputs((values) => ({ ...values, [name]: value }));
-    console.log(inputs.user_email, "ini email");
-  };
-  console.log(inputs);
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post("http://localhost:8000/api/user/save", inputs);
-    if (
-      !inputs.user_nama ||
-      !inputs.user_email ||
-      !inputs.user_password ||
-      !inputs.user_rePassword
-    ) {
+    if (!user_nama || !user_email || !user_password || !user_repassword) {
       alert("Please fill out all fields.");
       return;
     }
-    if (inputs.user_password !== inputs.user_repassword) {
-      alert("Please enter same password");
-      return;
+    if (user_password === user_repassword) {
+      const url = "%%";
+      let fData = new FormData();
+      fData.append("username", user_nama);
+      fData.append("email", user_email);
+      fData.append("password", user_repassword);
+
+      fetch(url, {
+        method: "POST",
+        body: fData,
+      })
+        .then((response) => response.json())
+        .then((data) => alert(data))
+        .catch((error) => alert(error));
+
+      alert("submit");
     } else {
-      console.log(inputs, "dari func");
+      console.log("Passwords do not match");
+      alert("Passwords do not match");
+      alert("submit");
     }
-
-    // if (!cust_username || !cust_email || !cust_password || !cust_repassword) {
-    //   alert("Please fill out all fields.");
-    //   return;
-    // }
-    // if (cust_password === cust_repassword) {
-    // const url = "%%";
-    // let fData = new FormData();
-    // fData.append("username", cust_username);
-    // fData.append("email", cust_email);
-    // fData.append("password", cust_password);
-
-    // fetch(url, {
-    //   method: "POST",
-    //   body: fData
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => alert(data))
-    //   .catch((error) => alert(error));
-
-    //   alert("submit");
-    // } else {
-    //   console.log("Passwords do not match");
-    //   alert("Passwords do not match");
-    //   alert("submit");
-    // }
   };
 
   return (
@@ -85,7 +60,8 @@ export default function Signup() {
               type="text"
               placeholder="Username"
               name="user_nama"
-              onChange={handleChange}
+              value={user_nama}
+              onChange={(e) => setNama(e.target.value)}
               required
             />
           </div>
@@ -102,7 +78,8 @@ export default function Signup() {
               type="email"
               placeholder="email"
               name="user_email"
-              onChange={handleChange}
+              value={user_email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
@@ -118,8 +95,8 @@ export default function Signup() {
               id="password"
               type="password"
               placeholder="******************"
-              name="user_password"
-              onChange={handleChange}
+              value={user_password}
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
           </div>
@@ -135,8 +112,8 @@ export default function Signup() {
               id="password"
               type="password"
               placeholder="******************"
-              name="user_repassword"
-              onChange={handleChange}
+              value={user_repassword}
+              onChange={(e) => setRepassword(e.target.value)}
               required
             />
           </div>

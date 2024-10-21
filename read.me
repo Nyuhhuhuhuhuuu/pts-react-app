@@ -59,4 +59,18 @@ INSERT INTO admin(
     'password1234'
 )
 
-3. Jalankanlah
+3. Buatlah file pada htdocs
+
+1. server.php
+
+<?php
+header ("Access-Control-Allow-Origin: *");
+header ("Access-Control-Allow-Headers");
+echo "testing";
+
+2. .htaccess
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]
