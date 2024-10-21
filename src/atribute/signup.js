@@ -21,6 +21,7 @@ export default function Signup() {
   console.log(inputs);
   const handleSubmit = (event) => {
     event.preventDefault();
+    axios.post('http://localhost:8000/api/user/save', inputs);
     if (
       !inputs.user_nama ||
       !inputs.user_email ||
