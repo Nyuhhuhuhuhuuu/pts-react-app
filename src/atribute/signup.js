@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import axios from "axios";
 export default function Signup() {
   // const [cust_username, setUsername] = useState("");
   // const [cust_email, setEmail] = useState("");
@@ -21,7 +21,7 @@ export default function Signup() {
   console.log(inputs);
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('http://localhost:8000/api/user/save', inputs);
+    axios.post("http://localhost:8000/api/user/save", inputs);
     if (
       !inputs.user_nama ||
       !inputs.user_email ||
