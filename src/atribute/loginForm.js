@@ -9,6 +9,20 @@ export default function Signup() {
     if (!user_nama || !user_password) {
       alert("Please fill out all fields.");
       return;
+    } else{
+      console.log("masuk");
+      const url = "http://localhost:80/api/login.php"
+      let fData = new FormData();
+      fData.append("username", user_nama);
+      fData.append("password", user_password);
+      
+      fetch(url,{
+        method: "POST",
+        body: fData,
+      })
+      .then((response)=> response.json())
+      .then((data)=>alert(data))
+      .catch((error)=>alert(error));
     }
   };
 
