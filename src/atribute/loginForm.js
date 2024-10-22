@@ -1,17 +1,39 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Signup() {
   const [user_nama, setUsername] = useState("");
   const [user_password, setPassword] = useState("");
 
-  console.log(user_nama, "ini nama");
-  console.log(user_password, "ini password");
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!user_nama || !user_password) {
       alert("Please fill out all fields.");
       return;
+    }
+    try {
+      const response = await fetch("http://localhost/login.php", {
+        // Adjust the URL to your PHP endpoint
+        method: "LOGIN",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded", // For form URL encoding
+        },
+        body: new URLSearchParams({
+          username: user_nama,
+          password: user_password,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.status === 1) {
+        alert("Login successful!");
+        // Redirect or perform any other actions after successful login
+      } else {
+        alert(data.message); // Show error message from the response
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+      alert("An error occurred. Please try again later.");
     }
   };
 

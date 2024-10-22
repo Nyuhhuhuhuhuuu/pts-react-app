@@ -20,11 +20,11 @@ switch ($request_method) {
         $user_nama = $_POST['username'] ?? null;
         $user_email = $_POST['email'] ?? null;
         $user_password = $_POST['password'] ?? null;
-    
-    
-        if ($user_nama && $user_email && $user_password ) {
+
+
+        if ($user_nama && $user_email && $user_password) {
             // Read the image file contents
-      
+
 
             // Fetch the current count of records to create the new ID
             $stmt = $conn->query("SELECT COUNT(*) as total FROM users");
@@ -61,5 +61,40 @@ switch ($request_method) {
         // Send the JSON response
         echo json_encode($response);
         echo "insertion complete";
+        break;
+    case 'LOGIN':
+        // Handle LOGIN request
+        $user_nama = $_POST['username'] ?? null;
+        $user_password = $_POST['password'] ?? null;
+
+        if ($user_nama && $user_password) {
+            // Prepare SQL query to fetch user data
+            $sql = "SELECT * FROM users WHERE user_nama = :user_nama";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':user_nama', $user_nama);
+            $stmt->execute();
+
+            if ($stmt->rowCount() > 0) {
+                $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                // Verify the password
+                if (password_verify($user_password, $user['user_password'])) {
+                    // Successful login
+                    $response = ['status' => 1, 'message' => 'Login successful.'];
+                } else {
+                    // Incorrect password
+                    $response = ['status' => 0, 'message' => 'Invalid password.'];
+                }
+            } else {
+                // User not found
+                $response = ['status' => 0, 'message' => 'User not found.'];
+            }
+        } else {
+            // Handle missing form data
+            $response = ['status' => 0, 'message' => 'Incomplete form data.'];
+        }
+
+        // Send the JSON response for login
+        echo json_encode($response);
         break;
 }
