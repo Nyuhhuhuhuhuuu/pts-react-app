@@ -18,7 +18,7 @@ export default function Signup() {
       return;
     }
     if (user_password === user_repassword) {
-      const url = "%%";
+      const url = "http://localhost:80/api/server.php";
       let fData = new FormData();
       fData.append("username", user_nama);
       fData.append("email", user_email);
