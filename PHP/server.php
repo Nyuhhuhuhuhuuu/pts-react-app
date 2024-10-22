@@ -62,39 +62,5 @@ switch ($request_method) {
         echo json_encode($response);
         echo "insertion complete";
         break;
-    case 'LOGIN':
-        // Handle LOGIN request
-        $user_nama = $_POST['username'] ?? null;
-        $user_password = $_POST['password'] ?? null;
 
-        if ($user_nama && $user_password) {
-            // Prepare SQL query to fetch user data
-            $sql = "SELECT * FROM users WHERE user_nama = :user_nama";
-            $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':user_nama', $user_nama);
-            $stmt->execute();
-
-            if ($stmt->rowCount() > 0) {
-                $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-                // Verify the password
-                if (password_verify($user_password, $user['user_password'])) {
-                    // Successful login
-                    $response = ['status' => 1, 'message' => 'Login successful.'];
-                } else {
-                    // Incorrect password
-                    $response = ['status' => 0, 'message' => 'Invalid password.'];
-                }
-            } else {
-                // User not found
-                $response = ['status' => 0, 'message' => 'User not found.'];
-            }
-        } else {
-            // Handle missing form data
-            $response = ['status' => 0, 'message' => 'Incomplete form data.'];
-        }
-
-        // Send the JSON response for login
-        echo json_encode($response);
-        break;
 }

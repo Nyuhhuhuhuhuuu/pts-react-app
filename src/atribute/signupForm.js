@@ -44,10 +44,7 @@ export default function Signup() {
             Create Account
           </p>
           <div className="mb-3">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="username"
-            >
+            <label className="block text-gray-700 text-sm font-bold mb-2">
               Username <sup className="text-red-500">*</sup>
             </label>
             <input
@@ -62,10 +59,7 @@ export default function Signup() {
             />
           </div>
           <div className="mb-3">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="email"
-            >
+            <label className="block text-gray-700 text-sm font-bold mb-2">
               Email <sup className="text-red-500">*</sup>
             </label>
             <input
@@ -80,10 +74,7 @@ export default function Signup() {
             />
           </div>
           <div className="mb-3">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="password"
-            >
+            <label className="block text-gray-700 text-sm font-bold mb-2">
               Password <sup className="text-red-500">*</sup>
             </label>
             <input
@@ -97,10 +88,7 @@ export default function Signup() {
             />
           </div>
           <div className="mb-6">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="repassword"
-            >
+            <label className="block text-gray-700 text-sm font-bold mb-2">
               Re-Password <sup className="text-red-500">*</sup>
             </label>
             <input
