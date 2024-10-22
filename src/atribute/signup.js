@@ -6,13 +6,15 @@ export default function Signup() {
   const [user_password, setPassword] = useState("");
   const [user_repassword, setRepassword] = useState("");
 
-  console.log(user_email, "ini email");
-  console.log(user_nama, "ini username");
-  console.log(user_password, "ini password");
-  console.log(user_repassword, "ini repassword");
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log(user_email, "ini email");
+    console.log(user_nama, "ini username");
+    console.log(user_password, "ini password");
+    console.log(user_repassword, "ini repassword");
+    
     if (!user_nama || !user_email || !user_password || !user_repassword) {
       alert("Please fill out all fields.");
       return;
