@@ -52,12 +52,18 @@ export default function Signup() {
               required
             />
           </div>
-          <div className="mb-6">
+          <div className="mb-6 flex items-center justify-between">
             <a
               href="#"
               className="text-sky-600/75 text-xs font-semibold font-serif hover:text-sky-600"
             >
               Forgot Password
+            </a>
+            <a
+              href="/signup"
+              className="text-sky-600/75 text-xs font-semibold font-serif hover:text-sky-600"
+            >
+              Sign Up
             </a>
           </div>
           <div className="flex items-center justify-center">
@@ -66,7 +72,7 @@ export default function Signup() {
               type="button"
               onClick={handleSubmit}
             >
-              Create
+              Login
             </button>
           </div>
         </form>

@@ -1,20 +1,14 @@
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 export default function Signup() {
   const [user_nama, setNama] = useState("");
   const [user_email, setEmail] = useState("");
   const [user_password, setPassword] = useState("");
   const [user_repassword, setRepassword] = useState("");
-
-
-
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(user_email, "ini email");
-    console.log(user_nama, "ini username");
-    console.log(user_password, "ini password");
-    console.log(user_repassword, "ini repassword");
-    
+
     if (!user_nama || !user_email || !user_password || !user_repassword) {
       alert("Please fill out all fields.");
       return;
@@ -34,7 +28,7 @@ export default function Signup() {
         .then((data) => alert(data))
         .catch((error) => alert(error));
 
-      alert("submit");
+      navigate("/login");
     } else {
       console.log("Passwords do not match");
       alert("Passwords do not match");

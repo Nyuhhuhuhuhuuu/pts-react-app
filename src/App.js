@@ -1,15 +1,14 @@
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
-
-import Navbar from "./atribute/navbar";
-import Signup from "./atribute/signup";
-import Login from "./atribute/login";
+import Home from "./pages/home";
+import Login from "./pages/login";
+import Signup from "./pages/signup";
 
 export default function App() {
   return (
     <div>
       <BrowserRouter>
-        <Navbar path="/" />
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
