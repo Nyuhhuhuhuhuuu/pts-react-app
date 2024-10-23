@@ -34,7 +34,7 @@ export default function Signup() {
         body: fData,
       });
 
-      const data = await response.json();
+      const data = await response.json(); //nerima json dari php
 
       if (data.status === 1) {
         setMessage("Registration successful! Redirecting to login...");
