@@ -10,26 +10,24 @@ export default function Signup() {
       alert("Please fill out all fields.");
       return;
     } else {
-      console.log("Submitting...");
       const url = "http://localhost:80/api/login.php";
       let fData = new FormData();
       fData.append("username", user_nama);
       fData.append("password", user_password);
+      try{
+        const response = await fetch(url, {
+          method: "POST",
+          body: fData,
+        });
+        const data = await response.json();
+        console.log(data, "ini data dari login");
 
-      fetch(url, {
-        method: "POST",
-        body: fData,
-      })
-        .then((response) => response.json()) // expecting a JSON response
-        .then((data) => {
-          if (data.success) {
-            alert("Login successful!");
-            // You can redirect here if login is successful
-          } else {
-            alert(data.message || "Login failed");
-          }
-        })
-        .catch((error) => alert("Error: " + error));
+        if( data.success === 1){
+          
+        }
+      } catch(error){
+        console.log("error");
+      }
     }
   };
 

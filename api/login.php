@@ -36,22 +36,21 @@ if ($request_method == "POST") {
             if (password_verify($password, $row['user_password'])) {
                 // Start the session and store user info
                 session_start();
-                
+
                 $_SESSION['user_nama'] = $row['user_nama'];
                 $_SESSION['user_id'] = $row['user_id'];
                 // Respond with success
-                $response = ["success" => true, "message" => "Login successful"];
+                $response = ["success" => 1, "message" => "Login successful"];
             } else {
                 // Invalid password
-                echo $row['user_password'];
-                $response = ["success" => false, "message" => "Invalid password"];
+                $response = ["success" => 0, "message" => "Invalid password"];
             }
         } else {
             // Username not found
-            $response = ["success" => false, "message" => "No user found with that username"];
+            $response = ["success" => 0, "message" => "No user found with that username"];
         }
     } else {
-        $response = ["success" => false, "message" => "Username and password are required"];
+        $response = ["success" => 0, "message" => "Username and password are required"];
     }
 
     echo json_encode($response);
