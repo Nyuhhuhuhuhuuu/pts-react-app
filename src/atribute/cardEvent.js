@@ -3,7 +3,7 @@ import location from "../images/location.svg";
 
 export default function CardEvent() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-4xl gap-5 mx-auto my-5 place-items-center overflow-x-auto">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-4xl gap-5 mx-auto my-5 py-5 place-items-center overflow-x-auto">
       <div className="max-w-sm rounded overflow-hidden shadow-lg hover:-translate-y-2 ease-linear duration-100">
         <div className="relative">
           <img

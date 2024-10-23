@@ -17,6 +17,7 @@ $user_email = $_POST['email'] ?? null;
 $user_password = $_POST['password'] ?? null;
 
 if ($user_nama && $user_email && $user_password) {
+    
     // Check if username already exists
     $stmt = $conn->prepare("SELECT COUNT(*) as total FROM users WHERE user_nama = :user_nama");
     $stmt->bindParam(':user_nama', $user_nama);

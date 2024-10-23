@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function Signup() {
   const [user_nama, setUsername] = useState("");
@@ -9,20 +9,27 @@ export default function Signup() {
     if (!user_nama || !user_password) {
       alert("Please fill out all fields.");
       return;
-    } else{
-      console.log("masuk");
-      const url = "http://localhost:80/api/login.php"
+    } else {
+      console.log("Submitting...");
+      const url = "http://localhost:80/api/login.php";
       let fData = new FormData();
       fData.append("username", user_nama);
       fData.append("password", user_password);
-      
-      fetch(url,{
+
+      fetch(url, {
         method: "POST",
         body: fData,
       })
-      .then((response)=> response.json())
-      .then((data)=>alert(data))
-      .catch((error)=>alert(error));
+        .then((response) => response.json()) // expecting a JSON response
+        .then((data) => {
+          if (data.success) {
+            alert("Login successful!");
+            // You can redirect here if login is successful
+          } else {
+            alert(data.message || "Login failed");
+          }
+        })
+        .catch((error) => alert("Error: " + error));
     }
   };
 
@@ -32,10 +39,7 @@ export default function Signup() {
         <form className="shadow-md rounded px-8 pt-6 pb-8 mb-4 bg-light-teal">
           <p className="text-center text-white text-lg font-bold">Login</p>
           <div className="mb-3">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-        
-            >
+            <label className="block text-gray-700 text-sm font-bold mb-2">
               Username <sup className="text-red-500">*</sup>
             </label>
             <input
