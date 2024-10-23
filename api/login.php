@@ -18,9 +18,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
 
     // Prepare SQL statement to prevent SQL injection
-    $sql = "SELECT * FROM users WHERE username = :username";
+    $sql = "SELECT * FROM users WHERE user_nama = :username";
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+    $stmt->bindParam(':user_nama', $username, PDO::PARAM_STR);
 
     // Execute the query
     $stmt->execute();
