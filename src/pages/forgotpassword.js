@@ -1,12 +1,11 @@
 import Navbar from "../atribute/navbar";
-import Loginform from "../atribute/loginForm";
+import Forgotpassword from "../atribute/forgotPasswordForm";
 
 export default function Login() {
   return (
     <div>
       <Navbar />
-      <Loginform />
-
+      <Forgotpassword />
     </div>
   );
 }
