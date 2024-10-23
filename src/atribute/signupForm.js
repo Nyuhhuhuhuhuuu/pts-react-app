@@ -34,18 +34,18 @@ export default function Signup() {
         body: fData,
       });
 
-      const data = await response.json(); //nerima json dari php
+      const data = await response.json();
 
       if (data.status === 1) {
         setMessage("Registration successful! Redirecting to login...");
-        // Delay navigation for a brief moment to show success message
         setTimeout(() => navigate("/login"), 2000);
       } else {
-        setMessage(data.message); // Show the error message returned from PHP
+
+        setMessage(data.message, "ini dari else"); 
       }
     } catch (error) {
-      console.error("Error during registration:", error);
-      setMessage("An error occurred. Please try again later.");
+      console.error("ini error", error)
+      setMessage("Username sudah ada, mohon gunakan yang lain");
     }
   };
 
